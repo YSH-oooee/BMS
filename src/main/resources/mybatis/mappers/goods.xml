@@ -1,0 +1,83 @@
+<?xml version="1.0" encoding="UTF-8" ?>
+<!DOCTYPE mapper PUBLIC "-//mybatis.org//DTD Mapper 3.0//EN" "http://mybatis.org/dtd/mybatis-3-mapper.dtd">
+
+<mapper namespace="mapper.goods">
+
+     <select id="selectGoodsList" parameterType="String" resultType="GoodsDTO"   >
+        <![CDATA[
+         SELECT 
+         		T.*
+         FROM ( SELECT 
+         				G.*,
+         				D.FILE_NAME AS goodsFileName
+         		FROM 
+         				T_SHOPPING_GOODS G 
+         					  INNER JOIN T_GOODS_DETAIL_IMAGE D
+        							  ON G.GOODS_ID = D.GOODS_ID 
+        							 AND D.FILE_TYPE = 'main_image' 
+        							 AND G.GOODS_STATUS = #{goodsStatus}
+            	ORDER BY 
+            			G.GOODS_CREDATE DESC) T
+	      WHERE   
+	      		ROWNUM < 16
+	    ]]>
+	</select>
+	
+	<select id="selectGoodsDetail" resultType="GoodsDTO" parameterType="String">
+	    <![CDATA[
+		    SELECT 
+		    		G.*,
+		    		D.FILE_NAME AS goodsFileName
+		    FROM 
+		    		T_SHOPPING_GOODS G 
+		    		      INNER JOIN T_GOODS_DETAIL_IMAGE D
+	        					  ON G.GOODS_ID = D.GOODS_ID 
+	        					 AND D.FILE_TYPE = 'main_image'
+	        					 AND G.GOODS_ID = #{goodsId}
+	        ORDER BY 
+	        		G.GOODS_ID
+    	]]>
+	</select>
+	
+	<select id="selectGoodsDetailImage" resultType="ImageFileDTO" parameterType="String"  >
+	    <![CDATA[
+	    	SELECT 
+					* 
+			FROM  
+					T_GOODS_DETAIL_IMAGE 
+			WHERE  
+					FILE_TYPE != 'main_image' AND GOODS_ID = #{goodsId}
+    	]]>
+	</select>
+	
+   <select id="selectGoodsBySearchWord" resultType="GoodsDTO" parameterType="String"  >
+     <![CDATA[
+			SELECT 
+					G.*,
+					D.FILE_NAME AS goodsFileName
+			FROM 
+					T_SHOPPING_GOODS G
+					      INNER JOIN T_GOODS_DETAIL_IMAGE D
+		    					  ON G.GOODS_ID = D.GOODS_ID
+		    					 AND D.FILE_TYPE = 'main_image' 
+		    					 AND G.GOODS_TITLE LIKE '%'|| #{searchWord} || '%'
+		    ORDER BY 
+		    		G.GOODS_CREDATE DESC
+		]]>
+	</select>	
+	
+	<select id="selectKeywordSearch" resultType="String" parameterType="String"  >
+	    <![CDATA[
+	       
+	       	SELECT 
+	        		GOODS_TITLE 
+	        FROM 
+	        		T_SHOPPING_GOODS 
+	        WHERE         
+	        		GOODS_TITLE LIKE '%'|| #{keyword} || '%'
+	        ORDER BY 
+	        		GOODS_CREDATE DESC
+		]]>
+	</select>
+	
+</mapper>
