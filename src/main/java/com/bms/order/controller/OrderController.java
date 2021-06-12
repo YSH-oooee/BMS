@@ -70,7 +70,9 @@ public class OrderController {
 	}
 	
 	@RequestMapping(value="/orderAllCartGoods.do")
-	public ModelAndView orderAllCartGoods(@RequestParam("cartGoodsQty") String[] cartGoodsQty, HttpServletRequest request)  throws Exception{
+	public ModelAndView orderAllCartGoods(@RequestParam("cartGoodsQty") String[] cartGoodsQty, 
+										  @RequestParam("final_totalPrice") int final_totalPrice, 
+										  HttpServletRequest request)  throws Exception{
 		
 		ModelAndView mv = new ModelAndView();
 		mv.setViewName("/order/orderAllCartGoods");
@@ -78,16 +80,22 @@ public class OrderController {
 		HttpSession session=request.getSession();
 		
 		Map cartMap=(Map)session.getAttribute("cartMap");
-		List<OrderDTO> myOrderList=new ArrayList<OrderDTO>();
 		
+		List<OrderDTO> myOrderList = new ArrayList<OrderDTO>();
 		List<GoodsDTO> myGoodsList = (List<GoodsDTO>)cartMap.get("myGoodsList");
+		
 		MemberDTO memberDTO=(MemberDTO)session.getAttribute("memberInfo");
 		
 		for (int i=0; i<cartGoodsQty.length;i++){
+			
 			String[] cart_goods=cartGoodsQty[i].split(":");
+			
 			for (int j = 0; j< myGoodsList.size();j++) {
+				
 				GoodsDTO GoodsDTO = myGoodsList.get(j);
+
 				int goodsId = GoodsDTO.getGoodsId();
+				
 				if (goodsId == Integer.parseInt(cart_goods[0])) {
 					OrderDTO orderDTO = new OrderDTO();
 					String goodsTitle = GoodsDTO.getGoodsTitle();
@@ -99,13 +107,21 @@ public class OrderController {
 					orderDTO.setGoodsSalesPrice(goodsSalesPrice);
 					orderDTO.setGoodsFileName(goodsFileName);
 					orderDTO.setOrderGoodsQty(Integer.parseInt(cart_goods[1]));
+					
 					myOrderList.add(orderDTO);
+					
 					break;
 				}
+				
 			}
+			
 		}
+		System.out.println("final_totalPrice : " + final_totalPrice);
+		session.setAttribute("final_totalPrice", final_totalPrice);
+		session.setAttribute("myGoodsList", myGoodsList);
 		session.setAttribute("myOrderList", myOrderList);
 		session.setAttribute("orderer", memberDTO);
+		
 		return mv;
 		
 	}	
@@ -119,10 +135,12 @@ public class OrderController {
 		HttpSession session = request.getSession();
 		MemberDTO memberDTO = (MemberDTO)session.getAttribute("orderer");
 		String memberId =  "";
+		
 		if (memberDTO != null) 
 			memberId = memberDTO.getMemberId();
 		
 		String ordererName = "";
+		
 		if (memberDTO != null)
 			ordererName = memberDTO.getMemberName();
 		
@@ -131,6 +149,7 @@ public class OrderController {
 		
 		for (int i=0; i<myOrderList.size(); i++){
 			OrderDTO orderDTO = (OrderDTO)myOrderList.get(i);
+			
 			orderDTO.setMemberId(memberId);
 			orderDTO.setOrdererName(ordererName);
 			orderDTO.setReceiverName(receiverMap.get("receiverName"));
@@ -150,10 +169,12 @@ public class OrderController {
 			orderDTO.setCardPayMonth(receiverMap.get("cardPayMonth"));
 			orderDTO.setPayOrdererHpNum(receiverMap.get("payOrdererHpNum"));	
 			orderDTO.setOrdererHp(ordererHp);	
+			
 			myOrderList.set(i, orderDTO); 
 		}
 		
 	    orderService.addNewOrder(myOrderList);
+	    
 		mv.addObject("myOrderInfo",receiverMap);
 		mv.addObject("myOrderList", myOrderList);
 		

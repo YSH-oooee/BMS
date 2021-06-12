@@ -207,7 +207,7 @@
 			</tbody>
 		</table>
 		<ul>
-			<li><a class="buy" href="javascript:fn_order_each_goods('${goods.goodsId}','${goods.goodsTitle}','${goods.goodsSalesPrice}','${goods.goodsFileName}');">구매하기 </a></li>
+			<li><a class="buy" href="javascript:fn_order_each_goods('${goods.goodsId}','${goods.goodsTitle}','${goods.goodsSalesPrice}','${goods.goodsFileName}', '${orderGoodsQty}');">구매하기 </a></li>
 			<li><a class="cart" href="javascript:add_cart('${goods.goodsId}')">장바구니</a></li>
 		</ul>
 	</div>

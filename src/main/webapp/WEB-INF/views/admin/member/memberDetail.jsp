@@ -223,27 +223,27 @@
 					<td>
 						<input name="memberId" id="memberId" type="text" class="form-control"  value="${memberInfo.memberId}"  disabled/>
 					</td>
-					 <td>
+					 <!-- <td>
 					  <input type="button" value="수정" class="btn btn-outline-primary btn-sm"  disabled onClick="fn_modify_member_info('${memberInfo.memberId }','memberId')" />
-					</td>
+					</td> -->
 				</tr>
 				<tr>
 					<td align="center">비밀번호</td>
 					<td>
 					  <input name="memberPw" type="password" class="form-control" value="${memberInfo.memberPw }" />
 					</td>
-					<td>
+					<!-- <td>
 					  <input type="button" value="수정" class="btn btn-outline-primary btn-sm"  onClick="fn_modify_member_info('${memberInfo.memberId }','memberPw')" />
-					</td>
+					</td> -->
 				</tr>
 				<tr>
 					<td align="center">이름</td>
 					<td>
 					  <input name="memberName" type="text" class="form-control" value="${memberInfo.memberName }"  />
 					 </td>
-					 <td>
+					 <!-- <td>
 					  <input type="button" value="수정" class="btn btn-outline-primary btn-sm" onClick="fn_modify_member_info('${memberInfo.memberId }','memberName')" />
-					</td>
+					</td> -->
 				</tr>
 				<tr>
 					<td align="center">성별</td>
@@ -253,9 +253,9 @@
 				      <input type="radio" name="memberGender" class="custom-control-input" value="102" <c:if test="${memberInfo.memberGender eq '102' }">checked </c:if> />
 					  <label class="custom-control-label" for="g2">여성</label>
 					</td>
-					<td>
+					<!-- <td>
 					  <input type="button" value="수정" class="btn btn-outline-primary btn-sm"  onClick="fn_modify_member_info('${memberInfo.memberId }','memberGender')" />
-					</td>
+					</td> -->
 				</tr>
 				<tr>
 					<td align="center">생년월일</td>
@@ -312,9 +312,9 @@
 						</c:otherwise>
 						</c:choose>
 					</td>
-					<td>
+					<!-- <td>
 					  <input type="button" value="수정" class="btn btn-outline-primary btn-sm"  onClick="fn_modify_member_info('${memberInfo.memberId }','memberBirth')" />
-					</td>
+					</td> -->
 				</tr>
 				<tr>
 					<td align="center">전화번호</td>
@@ -343,9 +343,9 @@
 					    - <input type="text" class="form-control"  name="tel2" value="${memberInfo.tel2 }" style="display:inline; width:70px; padding:0"> 
 					    - <input type="text" class="form-control"  name="tel3" value="${memberInfo.tel3 }" style="display:inline; width:70px; padding:0">
 					</td>
-					<td>
+					<!-- <td>
 					  <input type="button" value="수정" class="btn btn-outline-primary btn-sm"  onClick="fn_modify_member_info('${memberInfo.memberId }','tel')" />
-					</td>
+					</td> -->
 				</tr>
 				<tr>
 					<td align="center">핸드폰 번호</td>
@@ -373,9 +373,9 @@
 						</c:otherwise>
 					 </c:choose>	
 				    </td>
-					<td>
+					<!-- <td>
 					  <input type="button" value="수정" class="btn btn-outline-primary btn-sm"  onClick="fn_modify_member_info('${memberInfo.memberId }','hp')" />
-					</td>	
+					</td> -->	
 				</tr>
 				<tr>
 					<td align="center">이메일(e-mail)</td>
@@ -400,9 +400,9 @@
 						</c:otherwise>
 					 </c:choose>
 					</td>
-					<td>
+					<!-- <td>
 					  <input type="button" value="수정" class="btn btn-outline-primary btn-sm"  onClick="fn_modify_member_info('${memberInfo.memberId }','email')" />
-					</td>
+					</td> -->
 				</tr>
 				<tr>
 					<td align="center">주소</td>
@@ -417,9 +417,9 @@
 						   <span id="guide" style="color:#999"></span>
 					   </p>
 					</td>
-					<td>
+					<!-- <td>
 					  <input type="button" value="수정" class="btn btn-outline-primary btn-sm"  onClick="fn_modify_member_info('${memberInfo.memberId }','address')" />
-					</td>
+					</td> -->
 				</tr>
 		</table>
 		<p align="right">

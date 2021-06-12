@@ -16,6 +16,7 @@
         			PAY_ORDER_TIME DESC
 		]]>
 	</select>
+	
 	<insert id="insertNewOrder" parameterType="OrderDTO">
 	    <selectKey resultType="int" keyProperty="orderSeqNum" order="BEFORE">
 	    	SELECT 
@@ -56,16 +57,16 @@
     	]]>
 	</insert>
 
-   <select id="selectOrderID" resultType="int"  >
+   <select id="selectOrderID" resultType="int">
 	    <![CDATA[
 		    SELECT 
-		    		ORDER_SEQ_NUM.NEXTVAL  
+		    		ORDER_SEQ_NUM.NEXTVAL
 		    FROM 
 		    		DUAL
     	]]>
 	</select>
 	
-	<select id="selectMyOrder" resultType="OrderDTO" parameterType="String"  >
+	<select id="selectMyOrder" resultType="OrderDTO" parameterType="String">
 	    <![CDATA[
 		    SELECT 
 		    		* 

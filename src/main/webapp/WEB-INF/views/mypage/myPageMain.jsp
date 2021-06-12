@@ -38,16 +38,19 @@
 </script>
 </head>
 <body>
-<h1>최근주문내역<a href="#"> <img src="${contextPath}/resources/image/btn_more_see.jpg"></a></h1>
+<h1>최근주문내역<a href="/mypage/listMyOrderHistory.do"> <img src="${contextPath}/resources/image/btn_more_see.jpg"></a></h1>
 <table class="list_view">
-	<tbody align=center >
-		<tr style="background:#33ff00" >
-			<td>주문번호</td>
-			<td>주문일자</td>
-			<td>주문상품</td>
-			<td>주문상태</td>
-			<td>주문취소</td>
+	
+	<thead>
+		<tr style="height: 40px;" >
+			<th>주문번호</th>
+			<th>주문일자</th>
+			<th>주문상품</th>
+			<th>주문상태</th>
+			<th>주문취소</th>
 		</tr>
+	</thead>
+	<tbody align=center >
       <c:choose>
          <c:when test="${ empty myOrderList  }">
 		  <tr>
@@ -61,10 +64,10 @@
 	       <c:choose> 
               <c:when test="${ preOrderId != item.orderId}">
                 <c:choose>
-	              <c:when test="${item.deliveryState=='deliveryPrepared' }">
+	              <c:when test="${item.deliveryState == 'deliveryPrepared' }">
 	                <tr  bgcolor="lightgreen">    
 	              </c:when>
-	              <c:when test="${item.deliveryState=='finishedDelivering' }">
+	              <c:when test="${item.deliveryState == 'finishedDelivering' }">
 	                <tr  bgcolor="lightgray">    
 	              </c:when>
 	              <c:otherwise>
@@ -79,7 +82,7 @@
 			<td align="left">
 			   <strong>
 			      <c:forEach var="item2" items="${myOrderList}" varStatus="j">
-			          <c:if  test="${item.orderId ==item2.orderId}" >
+			          <c:if  test="${item.orderId == item2.orderId}" >
 			            <a href="${contextPath}/goods/goodsDetail.do?goodsId=${item2.goodsId }">${item2.goodsTitle }/${item.orderGoodsQty }개</a><br>
 			         </c:if>   
 				 </c:forEach>
@@ -125,7 +128,7 @@
 
 <br><br><br>	
 <h1>나의 정보
-    <a href="#"> <img src="${contextPath}/resources/image/btn_more_see.jpg" /></a>
+    <a href="/mypage/myDetailInfo.do"> <img src="${contextPath}/resources/image/btn_more_see.jpg" /></a>
 </h1>
 <table style="border: 0; width: 100%;">
   <tr>

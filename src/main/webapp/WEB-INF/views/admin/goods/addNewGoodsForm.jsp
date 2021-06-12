@@ -98,7 +98,7 @@
 					</tr>
 					<tr>
 						<td>제품 구매 포인트</td>
-						<td><input name="goodsPoint" type="text" class="form-control"/></td>
+						<td><input name="goodsPoint" type="text" class="form-control" placeholder="판매가격의 1%가 자동적용됩니다." readonly/></td>
 					</tr>
 					<tr>
 						<td>제품출판일</td>

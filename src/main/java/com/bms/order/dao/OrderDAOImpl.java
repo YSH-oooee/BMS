@@ -20,8 +20,11 @@ public class OrderDAOImpl implements OrderDAO {
 	}
 	
 	public void insertNewOrder(List<OrderDTO> myOrderList) throws DataAccessException{
-		int orderId = selectOrderID();
+		
+		int orderId = 0;
+		
 		for(int i=0; i<myOrderList.size(); i++){
+			orderId = selectOrderID();
 			OrderDTO orderDTO = (OrderDTO)myOrderList.get(i);
 			orderDTO.setOrderId(orderId);
 			sqlSession.insert("mapper.order.insertNewOrder",orderDTO);

@@ -17,11 +17,11 @@
 					
 					
 					if (h_deliveryState.length == undefined){
-						s_deliveryState.value=h_deliveryState.value; //조회된 주문 정보가 1건인 경우
+						s_deliveryState.value=h_deliveryState.value;
 					}
 					else {
 						for (var i=0; s_deliveryState.length;i++){
-							s_deliveryState[i].value=h_deliveryState[i].value;//조회된 주문 정보가 여러건인 경우
+							s_deliveryState[i].value=h_deliveryState[i].value;
 						}
 					}
 				}
@@ -113,11 +113,9 @@
 		
 	}
 	
-	
-	//상세조회 버튼 클릭 시 수행
 	function fn_detail_search(){
 		
-var frm_delivery_list = document.frm_delivery_list;
+	var frm_delivery_list = document.frm_delivery_list;
 		
 		beginYear   = frm_delivery_list.beginYear.value;
 		beginMonth  = frm_delivery_list.beginMonth.value;
@@ -410,11 +408,11 @@ var frm_delivery_list = document.frm_delivery_list;
 	         <tr>
               <td colspan="8" class="fixed">
                  <c:forEach var="page" begin="1" end="10" step="1" >
-		          <c:if test="${section >1 && page==1 }">
+		          <c:if test="${section > 1 && page == 1 }">
 		           <a href="${contextPath}/admin/order/adminOrderMain.do?chapter=${section-1}&pageNum=${(section-1)*10 +1 }">&nbsp;&nbsp;</a>
 		          </c:if>
 		           <a href="${contextPath}/admin/order/adminOrderMain.do?chapter=${section}&pageNum=${page}">${(section-1)*10 +page } </a>
-		          <c:if test="${page ==10 }">
+		          <c:if test="${page == 10 }">
 		           <a href="${contextPath}/admin/order/adminOrderMain.do?chapter=${section+1}&pageNum=${section*10+1}">&nbsp; next</a>
 		          </c:if> 
 	      		</c:forEach> 

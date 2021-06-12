@@ -136,9 +136,9 @@ public class AdminGoodsController {
 		HttpSession session = multipartRequest.getSession();
 		MemberDTO memberDTO = (MemberDTO) session.getAttribute("memberInfo");
 		String regId = "";
-		if (memberDTO != null)
-			regId = memberDTO.getMemberId();
 		
+		if (memberDTO != null)
+			regId = memberDTO.getMemberId();		
 		
 		List<ImageFileDTO> imageFileList = fileController.upload(multipartRequest);
 		if (imageFileList != null && imageFileList.size() != 0) {
@@ -152,9 +152,11 @@ public class AdminGoodsController {
 		ResponseEntity<String> resEntity = null;
 		HttpHeaders responseHeaders = new HttpHeaders();
 		responseHeaders.add("Content-Type", "text/html; charset=utf-8");
+		
 		try {
 			
 			int goodsId = adminGoodsService.addNewGoods(newGoodsMap);
+			
 			if (imageFileList != null && imageFileList.size() != 0) {
 				for (ImageFileDTO  imageFileDTO : imageFileList) {
 					imageFileName = imageFileDTO.getFileName();

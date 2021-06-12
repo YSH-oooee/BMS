@@ -182,7 +182,7 @@
 				   <strong>
 				      <c:forEach var="item2" items="${myOrderHistList}" varStatus="j">
 				          <c:if  test="${item.orderId ==item2.orderId}" >
-				             ${item.goodsSalesPrice * item.orderGoodsQty }원 &emsp;/ &emsp; ${item.orderGoodsQty }(개)<br>
+				             <fmt:formatNumber value="${item.goodsSalesPrice * item.orderGoodsQty }" type="number" /> 원 &emsp;/ &emsp; ${item.orderGoodsQty }(개)<br>
 				         </c:if>   
 					 </c:forEach>
 				   </strong>

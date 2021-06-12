@@ -283,7 +283,7 @@
 	 	<col width="10%">
 	 </colgroup>
 	 <tbody align=center >
-	  <tr align=center style="background:#33ff00; color:#fff; height: 50px;">
+	  <tr align=center style="color:#00000; height: 50px;">
 		<td width=10%>회원아이디</td>
 		<td width=10%>회원이름</td>
 		<td width=10%>휴대폰번호</td>

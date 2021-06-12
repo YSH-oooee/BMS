@@ -22,7 +22,7 @@
 			<h3>정보내역</h3>
 			<ul>
 				<li><a href="${contextPath}/mypage/listMyOrderHistory.do">주문내역 조회</a></li>
-				<li><a href="${contextPath}/mypage/myDetailInfo.do">내 정보 수정</a></li>
+				<li><a href="${contextPath}/mypage/myDetailInfo.do">내 정보 보기</a></li>
 				<li><a href="${contextPath}/main/main.do">메인화면으로 이동</a></li>
 			</ul>
 		</li>

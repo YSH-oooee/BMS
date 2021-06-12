@@ -1,6 +1,10 @@
 <%@ page language="java" contentType="text/html; charset=utf-8" pageEncoding="utf-8"%> 
 <%@ taglib prefix="c" uri="http://java.sun.com/jsp/jstl/core"%>
+<%@ taglib prefix="fmt" uri="http://java.sun.com/jsp/jstl/fmt"%>
+
 <c:set var="contextPath"  value="${pageContext.request.contextPath}"  />
+<c:set var="totalDeliveryPrice" value="${h_totalDelivery }" />
+
 <!DOCTYPE html>
 <html>
 <head>
@@ -10,7 +14,7 @@
 	<h1>1.최종 주문 내역서</h1>
 	<table class="list_view">
 		<tbody align=center>
-			<tr style="background: #33ff00">
+			<tr>
 			    <td>주문번호 </td>
 				<td colspan=2 class="fixed">주문상품명</td>
 				<td>수량</td>
@@ -29,10 +33,10 @@
 				</td>
 				<td><h2><a href="${contextPath}/goods/goodsDetail.do?goodsId=${item.goodsId }">${item.goodsTitle }</a></h2></td>
 				<td><h2>${item.orderGoodsQty }개</h2></td>
-				<td><h2>${item.orderGoodsQty *item.goodsSalesPrice}원 (10% 할인)</h2></td>
-				<td><h2>0원</h2></td>
-				<td><h2>${1500 *item.orderGoodsQty }원</h2></td>
-				<td><h2>${item.orderGoodsQty *item.goodsSalesPrice}원</h2></td>
+				<td><h2><fmt:formatNumber value="${item.orderGoodsQty *item.goodsSalesPrice}" type="number" />원</h2></td>
+				<td><h2><fmt:formatNumber value="${totalDeliveryPrice }" type="number" /> 원</h2></td>
+				<td><h2><fmt:formatNumber value="${item.orderGoodsQty * (item.goodsSalesPrice * 0.01)}" type="number" />P</h2></td>
+				<td><h2><fmt:formatNumber value="${item.orderGoodsQty * item.goodsSalesPrice}" type="number" />원</h2></td>
 			</tr>
 			</c:forEach>
 		</tbody>
@@ -51,7 +55,7 @@
 				</tr>
 				<tr class="dot_line">
 					<td class="fixed_join">받으실 분</td>
-					<td>${myOrderInfo.recieverName}</td>
+					<td>${myOrderInfo.receiverName}</td>
 				</tr>
 				<tr class="dot_line">
 					<td class="fixed_join">휴대폰번호</td>
