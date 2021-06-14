@@ -212,7 +212,6 @@ public class AdminMemberController {
 		String makeFileTime = fileSdf.format(new Date());
 		String makeFileName = makeFileTime + "_memberList.xls";
 		
-	    // 워크북 생성
 	    Workbook wb = new HSSFWorkbook();
 	    Sheet sheet = wb.createSheet("회원리스트");
 	    Row row = null;
@@ -220,33 +219,25 @@ public class AdminMemberController {
 
 	    int rowNo = 0;
 
-
-	    // 테이블 헤더용 스타일
 	    CellStyle headStyle = wb.createCellStyle();
-	    // 가는 경계선
+	    
 	    headStyle.setBorderTop(BorderStyle.THIN);
 	    headStyle.setBorderBottom(BorderStyle.THIN);
 	    headStyle.setBorderLeft(BorderStyle.THIN);
 	    headStyle.setBorderRight(BorderStyle.THIN);
 
-
-	    // 노란색 배경
 	    headStyle.setFillForegroundColor(HSSFColorPredefined.YELLOW.getIndex());
 	    headStyle.setFillPattern(FillPatternType.SOLID_FOREGROUND);
 
-	    // 가운데 정렬
 	    headStyle.setAlignment(HorizontalAlignment.CENTER);
 
-
-
-	    // 데이터용 경계 스타일 테두리만 지정
 	    CellStyle bodyStyle = wb.createCellStyle();
+	    
 	    bodyStyle.setBorderTop(BorderStyle.THIN);
 	    bodyStyle.setBorderBottom(BorderStyle.THIN);
 	    bodyStyle.setBorderLeft(BorderStyle.THIN);
 	    bodyStyle.setBorderRight(BorderStyle.THIN);
 
-	    // 헤더 생성
 	    row = sheet.createRow(rowNo++);
 	    cell = row.createCell(0);
 	    cell.setCellStyle(headStyle);
@@ -267,7 +258,6 @@ public class AdminMemberController {
 	    cell.setCellStyle(headStyle);
 	    cell.setCellValue("상태");
 	    
-	    // 데이터 부분 생성
 		String fixedSearchPeriod = dateMap.get("fixedSearchPeriod");
 		String section           = dateMap.get("section");	
 		String pageNum           = dateMap.get("pageNum");
@@ -325,7 +315,6 @@ public class AdminMemberController {
 	    response.setContentType("ms-vnd/excel");
 	    response.setHeader("Content-Disposition", "attachment;filename="+makeFileName);
 
-	    // 엑셀 출력
 	    wb.write(response.getOutputStream());
 	    wb.close();
 

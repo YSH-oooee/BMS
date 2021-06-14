@@ -34,7 +34,7 @@ public class MemberController {
 	private MemberDTO memberDTO;
 	
 	@Autowired
-	private BCryptPasswordEncoder passwordEncoder;	//비밀번호 암호
+	private BCryptPasswordEncoder passwordEncoder;
 	
 	@RequestMapping(value="/login.do" , method = RequestMethod.POST)
 	public ModelAndView login(@RequestParam Map<String, String> loginMap, HttpServletRequest request) throws Exception {
@@ -43,21 +43,21 @@ public class MemberController {
 		
 		memberDTO = memberService.login(loginMap);		
 		
-		if (memberDTO != null && memberDTO.getDelYn().equals("N")) { 	// 조회된 결과가 있으면
+		if (memberDTO != null && memberDTO.getDelYn().equals("N")) {
 
-			HttpSession session = request.getSession();		// 세션 객체 생성(가져올 세선이 없으면 생성)
-			session.setAttribute("isLogOn", true);			// 로그인 true
-			session.setAttribute("memberInfo",memberDTO);	// memberInfo에 로그인한 계정의 정보등록
-			String action = (String)session.getAttribute("action");	//로그인 당시, 페이지
+			HttpSession session = request.getSession();
+			session.setAttribute("isLogOn", true);
+			session.setAttribute("memberInfo",memberDTO);
+			String action = (String)session.getAttribute("action");
 			
-			if (action!=null && action.equals("/order/orderEachGoods.do")){ // 주문상품으로 이동
+			if (action!=null && action.equals("/order/orderEachGoods.do")){
 				mv.setViewName("forward:"+action);
 			}
 			else {
-				mv.setViewName("redirect:/main/main.do");	// 메인으로 이동
+				mv.setViewName("redirect:/main/main.do");
 			}
 		}
-		else { // 조회된 결과가 없으면
+		else {
 			mv.addObject("message", "로그인에 실패하였습니다.");
 			mv.setViewName("/member/loginForm");
 		}

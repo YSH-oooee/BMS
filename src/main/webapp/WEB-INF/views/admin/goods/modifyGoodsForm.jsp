@@ -128,8 +128,7 @@
 	              }
 	        });
 	  }
-	 
-	 
+	 	 
 	 function deleteImageFile(goodsId,imageId,imageFileName,trId){
 				
 		 var tr = document.getElementById(trId);
@@ -159,7 +158,9 @@
 	}
 </style>
 </head>
+
 <body>
+
 	<div class="clear"></div>
 	<div id="container">
 		<form name="frm_mod_goods" method=post>
@@ -370,5 +371,6 @@
 			</form>
 		</div>
 	</div>
+	
 </body>
 </html>

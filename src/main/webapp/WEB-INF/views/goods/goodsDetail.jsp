@@ -43,7 +43,7 @@
 		
 		$.ajax({
 			type : "post",
-			async : false, //false인 경우 동기식으로 처리한다.
+			async : false,
 			url : "${contextPath}/cart/addGoodsInCart.do",
 			data : {
 				goodsId : goodsId,
@@ -67,15 +67,11 @@
 	
 	function imagePopup(type) {
 		if (type == 'open') {
-			// 팝업창을 연다.
 			jQuery('#layer').attr('style', 'visibility:visible');
-
-			// 페이지를 가리기위한 레이어 영역의 높이를 페이지 전체의 높이와 같게 한다.
 			jQuery('#layer').height(jQuery(document).height());
 		}
 
 		else if (type == 'close') {
-			// 팝업창을 닫는다.
 			jQuery('#layer').attr('style', 'visibility:hidden');
 		}
 	}
@@ -250,9 +246,8 @@
 	</div>
 	<div class="clear"></div>
 	<div id="layer" style="visibility: hidden">
-		<!-- visibility:hidden 으로 설정하여 해당 div안의 모든것들을 가려둔다. -->
-		<div id="popup">
-			<!-- 팝업창 닫기 버튼 -->
+		
+		<div id="popup">		
 			<a href="javascript:" onClick="javascript:imagePopup('close', '.layer01');"> 
 				<img src="${contextPath}/resources/image/close.png" id="close" />
 			</a> 

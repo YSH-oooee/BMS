@@ -24,14 +24,12 @@ public class CartServiceImpl  implements CartService{
 		
 		Map<String,List> cartMap = new HashMap<String,List>();
 		
-		//장바구니 목록
 		List<CartDTO> myCartList = cartDAO.selectCartList(cartDTO);
 		
 		if(myCartList.size()==0){ 
 			return null;
 		}
 		
-		//장바구니에 있는 상품 정보
 		List<GoodsDTO> myGoodsList = cartDAO.selectGoodsList(myCartList);
 		
 		cartMap.put("myCartList", myCartList);

@@ -20,7 +20,6 @@ public interface AdminGoodsDAO {
 	public void updateGoodsInfo(Map<String,String> goodsMap) throws DataAccessException;
 	public void updateGoodsImage(List<ImageFileDTO> imageFileList) throws DataAccessException;
 	public void deleteGoodsImage(int image_id) throws DataAccessException;
-	//public void deleteGoodsImage(List fileList) throws DataAccessException;
 	public List<OrderDTO> selectOrderGoodsList(Map<String,Object> condMap) throws DataAccessException;
 	public void updateOrderGoods(Map<String,Object> orderMap) throws DataAccessException;
 	

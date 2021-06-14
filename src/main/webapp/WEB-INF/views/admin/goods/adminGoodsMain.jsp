@@ -86,7 +86,9 @@
 </script>
 <link href="${contextPath }/resources/css/myStyle.css" rel="stylesheet" />
 </head>
+
 <body>
+
 	<h3>상품 조회</h3>
 	<form name="frm_delivery_list" method="post" >	
 		<table>
@@ -313,5 +315,6 @@
 	<div align="right">
 		<input class="btn btn-indigo btn-sm" type="button" onclick="location.href='${contextPath}/admin/goods/addNewGoodsForm.do'" value="상품 등록">
 	</div>
+	
 </body>
 </html>

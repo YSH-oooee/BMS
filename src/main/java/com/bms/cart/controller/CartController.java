@@ -48,7 +48,6 @@ public class CartController {
 		
 		Map<String ,List> cartMap = cartService.myCartList(cartDTO);
 		session.setAttribute("cartMap", cartMap);
-		//mv.addObject("cartMap", cartMap);
 		return mv;
 	
 	}

@@ -40,7 +40,9 @@
 	}
 </style>
 </head>
+
 <body>
+
 	<form action="${contextPath}/admin/goods/addNewGoods.do" method="post"  enctype="multipart/form-data">
 	<h1>새상품 등록창</h1>
 	<div class="tab_container">
@@ -176,4 +178,6 @@
 		 </p>
 	</div>
 	</div>
-</form>	 
+	
+</form>
+</body>

@@ -11,11 +11,11 @@
 
 	function fn_modify_order_state(orderId){
 		var s_deliveryState=document.getElementById("s_deliveryState");
-	    var index = s_deliveryState.selectedIndex;   //선택한 옵션의 인덱스를 구합니다.
-	    var value = s_deliveryState[index].value;    //선택한 옵션의 값을 구합니다.
+	    var index = s_deliveryState.selectedIndex;
+	    var value = s_deliveryState[index].value;
 		$.ajax({
 			type : "post",
-			async : false, //false인 경우 동기식으로 처리한다.
+			async : false,
 			url : "${contextPath}/admin/order/modifyDeliveryState.do",
 			data : {
 				orderId:orderId,
@@ -34,7 +34,7 @@
 				alert("에러가 발생했습니다."+data);
 			},
 			complete : function(data, textStatus) {
-				//alert("작업을완료 했습니다");
+				alert("작업을완료 했습니다");
 				
 			}
 		});		

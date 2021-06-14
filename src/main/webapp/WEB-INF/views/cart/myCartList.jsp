@@ -7,9 +7,9 @@
 <c:set var="myCartList"  value="${cartMap.myCartList}"  />
 <c:set var="myGoodsList" value="${cartMap.myGoodsList}"  />
 
-<c:set var="totalGoodsNum" value="0" />  			<!--주문 개수 -->
-<c:set var="totalDeliveryPrice" value="0" /> 		<!-- 총 배송비 --> 
-<c:set var="totalDiscountedPrice" value="0" /> 		<!-- 총 할인금액 -->
+<c:set var="totalGoodsNum" value="0" />
+<c:set var="totalDeliveryPrice" value="0" />
+<c:set var="totalDiscountedPrice" value="0" />
 
 
 <head>
@@ -71,7 +71,7 @@
 	  	var cartGoodsQty = 0;
 	  	var cartIdx = cartId - 1;
 	  	
-	  	if (length>1) { //카트에 제품이 한개인 경우와 여러개인 경우 나누어서 처리한다.
+	  	if (length>1) {
 	  		cartGoodsQty = document.frm_order_all_cart.cartGoodsQty[cartIdx].value;
 		} else {
 			cartGoodsQty = document.frm_order_all_cart.cartGoodsQty.value;
@@ -105,7 +105,7 @@
 		
 		var total_price, final_total_price, _goods_qty;
 		
-		_order_goods_qty	    = goodsQty; //장바구니에 담긴 개수 만큼 주문한다.
+		_order_goods_qty	    = goodsQty;
 		var formObj             = document.createElement("form");
 		var i_goods_id          = document.createElement("input"); 
 	    var i_goods_title       = document.createElement("input");
@@ -141,20 +141,18 @@
 	
 	function fn_order_all_cart_goods(){
 		
-		var order_goods_qty;											//for문의 해당 상품(선택)의 개수
-		var order_goods_id;												//for문의 해당 상품(선택)의 id
-		var objForm					= document.frm_order_all_cart;		//장바구니 form 전체
-		var totalPriceForm			= document.frm_total_cart_price;	//합산 form 전체
+		var order_goods_qty;
+		var order_goods_id;
+		var objForm					= document.frm_order_all_cart;
+		var totalPriceForm			= document.frm_total_cart_price;
 		
-		var cart_goods_qty			= objForm.cartGoodsQty;				//각 상품의 개수(선택/해제 구분X)
-		var checked_goods			= objForm.checked_goods;			//checkBox가 선택된 상품
-		var length					= checked_goods.length;				//선택된 상품 개수
+		var cart_goods_qty			= objForm.cartGoodsQty;
+		var checked_goods			= objForm.checked_goods;
+		var length					= checked_goods.length;
 		
-		//장바구니의 상품이 2개 이상
 		if (length>1){
 			
 			for (var i=0; i<length;i++){
-				//checkBox의 선택/해제 확인
 				if (checked_goods[i].checked == true){
 					
 					order_goods_id = checked_goods[i].value;
